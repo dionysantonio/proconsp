@@ -10,6 +10,7 @@ package Classes;
  * @author d119322
  */
 public class Cidades{
+
     private String nome;
     private Cidades next = null;
     private String regiao;
@@ -29,15 +30,19 @@ public class Cidades{
         return(regiao);
     }
     
+    public boolean IsFinal(){//Testa se é a última cidade da lista
+        return(next==null);
+    }
     public void AdmitirProximo(Cidades proximo){//Recebe o apontador da proxima cidade
-        next = proximo;
+        if (next==null){
+            next = proximo;
+        }
     }
     
     public Cidades RetornarProximo(){//Retorna o apontador da próxima cidade
         return next;
     }
     
-    public boolean IsFinal(){//Testa se é a última cidade da lista
-        return(next==null);
-    }
+
+    
 }
