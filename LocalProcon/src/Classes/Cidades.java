@@ -16,28 +16,28 @@ public class Cidades{
     
     public Cidades(){
     }
-    public Cidades(String name, String reg){
+    public Cidades(String name, String reg){//Método contrutor
         nome = name;
         regiao = reg;
     }
     
-    public void Imprimir(){
+    public void Imprimir(){//Imprime o nome da cidade
         System.out.println(nome);        
     }
     
-    public String RetornarRegiao(){
+    public String RetornarRegiao(){//Retorna a região da cidade
         return(regiao);
     }
     
-    public void AdmitirProximo(Cidades proximo){
+    public void AdmitirProximo(Cidades proximo){//Recebe o apontador da proxima cidade
         next = proximo;
     }
     
-    public Cidades RetornarProximo(){
+    public Cidades RetornarProximo(){//Retorna o apontador da próxima cidade
         return next;
     }
     
-    public boolean IsFinal(){
+    public boolean IsFinal(){//Testa se é a última cidade da lista
         return(next==null);
     }
 }
