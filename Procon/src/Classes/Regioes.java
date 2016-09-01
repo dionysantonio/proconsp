@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Classes;
-
+  import java.util.ArrayList;
+  import java.util.List;
 /**
  *
  * @author d119322
@@ -12,6 +13,8 @@ package Classes;
 
 
 public class Regioes {
+    
+    List<Cidades> cidade = new ArrayList();
     private String mesoregiao;
     private Cidades cidades;
     
@@ -19,12 +22,7 @@ public class Regioes {
     }
     
     public void Imprimir(){
-        
-        while(cidades.IsFinal()){
-            
-        }
-        
-        
+             
     }
     
             
