@@ -8,7 +8,11 @@ package Classes;
     import java.io.BufferedInputStream;
     import java.io.FileInputStream;
     import java.io.IOException;
-      
+    import java.util.ArrayList;
+    import java.util.Collection;
+
+
+
 
 /**
  *
@@ -18,25 +22,35 @@ public class LeDados {
    
 
     private DataInputStream dis;
-    private String[] dados;
+    private ArrayList<Procon> dadosProcon;
 
-
-    LeDados(String caminho){
+    LeDados(String caminho, ArrayList<Procon> dados){
+             
+        
+        
         try{
             dis = new DataInputStream(new BufferedInputStream(new FileInputStream(caminho)));
             String linha;
                 while ((linha = dis.readLine())!= null){//A primeira linha é o cabecalho. Este loop lê o arquivo todo
+                    
+                    String[] dados1;
+                    
                     linha = dis.readLine();
-                    dados = linha.split(";");//Separa os dados
+                    dados1 = linha.split(";");//Separa os dados
+                    Procon dadosP= new Procon(dados1);
+                    dados.add(dadosP);
+                    
                 } 
             dis.close();
         }catch(IOException notFound){
             System.out.print(notFound.getMessage());        
         }
+        dadosProcon = dados;
     //"C:/Users/d119322/Documents/teste.txt"
     }
     
-    public String[] get(){
-        return dados;// Neste primeiro momento está retornando a ultima linha, é preciso modificar.
+    public ArrayList<Procon> getProcon(){
+        dadosProcon = new ArrayList<>();
+        return dadosProcon;// Agora retorna umacoleção de String[]
     }   
 }
