@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package Classes;
+import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 /**
  *
@@ -19,22 +23,20 @@ public class RecebeDado {
         
     }
     
-    Procon procon(String caminho){
+    ArrayList<Procon> procon(String caminho){
         
-        LeDados date = new LeDados(caminho);//define caminho para leitura de dados
+        ArrayList<Procon> dados;
         
-        String[] dados = date.get();//retorna os dados lidos
+        LeDados date = new LeDados(caminho,dados);//define caminho para leitura de dados
         
-        Procon proconsp = new Procon(dados);//declara os dados em procon
-        
-        return proconsp;
+        return date.getProcon();
     }
 
     Cidade cidade(String caminho){
         
         LeDados date = new LeDados(caminho);//define caminho para leitura de dados
         
-        String[] dados = date.get();//retorna os dados lidos
+        Collection<String[]> dados = date.get();//retorna os dados lidos
         
         Cidade cidadesp = new Cidade(dados);//declara os dados em procon
         

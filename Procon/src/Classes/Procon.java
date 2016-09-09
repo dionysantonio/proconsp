@@ -19,7 +19,7 @@ public class Procon {
     private String email;
     private String site;
     
-    Procon(String dados[]){
+    Procon(String[] dados){
          nome = dados[0];
          cargo = dados[1];
          orgao = dados[2];
