@@ -19,28 +19,25 @@ import java.util.Iterator;
 
 public class RecebeDado {
     
+    private LeDados date = new LeDados();
+    
     void RecebeDado(){
         
     }
     
     ArrayList<Procon> procon(String caminho){
         
-        ArrayList<Procon> dados;
-        
-        LeDados date = new LeDados(caminho,dados);//define caminho para leitura de dados
+        date.readProcon(caminho);//define caminho para leitura de dados
         
         return date.getProcon();
     }
 
-    Cidade cidade(String caminho){
+    ArrayList<Cidade> cidade(String caminho){
         
-        LeDados date = new LeDados(caminho);//define caminho para leitura de dados
+        date.readCidade(caminho);//define caminho para leitura de dados
         
-        Collection<String[]> dados = date.get();//retorna os dados lidos
-        
-        Cidade cidadesp = new Cidade(dados);//declara os dados em procon
-        
-        return cidadesp;
+        return date.getCidade();
+       
     }
     
 }
