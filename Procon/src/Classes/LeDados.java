@@ -11,6 +11,8 @@ package Classes;
     import java.util.ArrayList;
     import java.util.Collection;
     import java.util.List;
+    import java.net.URL;
+    import java.net.MalformedURLException;
 
 
 
@@ -28,10 +30,17 @@ public class LeDados {
 
     void readProcon(String caminho){
         
+        URL url = null;
         ArrayList<Procon> dados = new ArrayList<>();
         
         try{
-            dis = new DataInputStream(new BufferedInputStream(new FileInputStream(caminho)));
+            url = new URL(caminho);
+        }catch(MalformedURLException error){
+            error.getMessage();
+        }
+                
+        try{
+            dis = (DataInputStream) url.openStream();
             String linha;
                 while ((linha = dis.readLine())!= null){//A primeira linha é o cabecalho. Este loop lê o arquivo todo
                     
