@@ -10,6 +10,7 @@ package Classes;
     import java.io.IOException;
     import java.util.ArrayList;
     import java.util.Collection;
+    import java.util.List;
 
 
 
@@ -23,10 +24,11 @@ public class LeDados {
 
     private DataInputStream dis;
     private ArrayList<Procon> dadosProcon;
+    private ArrayList<Cidade> dadosCidade;
 
-    LeDados(String caminho, ArrayList<Procon> dados){
-             
+    void readProcon(String caminho){
         
+        ArrayList<Procon> dados = new ArrayList<>();
         
         try{
             dis = new DataInputStream(new BufferedInputStream(new FileInputStream(caminho)));
@@ -49,8 +51,35 @@ public class LeDados {
     //"C:/Users/d119322/Documents/teste.txt"
     }
     
-    public ArrayList<Procon> getProcon(){
-        dadosProcon = new ArrayList<>();
-        return dadosProcon;// Agora retorna umacoleção de String[]
-    }   
+    void readCidade(String caminho){
+             
+         ArrayList<Cidade> dados = new ArrayList<>();
+        
+        try{
+            dis = new DataInputStream(new BufferedInputStream(new FileInputStream(caminho)));
+            String linha;
+                while ((linha = dis.readLine())!= null){//A primeira linha é o cabecalho. Este loop lê o arquivo todo
+                    
+                    String[] dados1;
+                    
+                    linha = dis.readLine();
+                    dados1 = linha.split(";");//Separa os dados
+                    Cidade dadosP= new Cidade(dados1);
+                    dados.add(dadosP);
+                    
+                } 
+            dis.close();
+        }catch(IOException notFound){
+            System.out.print(notFound.getMessage());        
+        }
+        dadosCidade = dados;
+    //"C:/Users/d119322/Documents/teste.txt"
+    }
+    
+     public ArrayList<Procon> getProcon(){
+        return dadosProcon;// Agora retorna ArrayList
+    } 
+     public ArrayList<Cidade> getCidade(){
+        return dadosCidade;// Agora retorna ArrayList
+    } 
 }
