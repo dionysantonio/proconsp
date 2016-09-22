@@ -40,4 +40,25 @@ public class RecebeDado {
        
     }
     
+    Procon searchProcon(ArrayList<Procon> lista, String parametro){
+        
+        Iterator i;
+        Procon bProcon;// objeto para retorno
+        
+        i = lista.iterator();//define iterator para busca
+        bProcon =(Procon) i.next();
+        
+        while (i.hasNext()){
+            
+        
+            if(bProcon.getName().equals(parametro)){
+                return bProcon;
+            }else{
+                bProcon =(Procon) i.next();
+            }
+            
+        }
+        
+        return null;
+    
 }
