@@ -40,7 +40,7 @@ public class LeDados {
         }
                 
         try{
-            dis = (DataInputStream) url.openStream();
+            dis = new DataInputStream(new BufferedInputStream(url.openStream()));
             String linha;
                 while ((linha = dis.readLine())!= null){//A primeira linha é o cabecalho. Este loop lê o arquivo todo
                     
