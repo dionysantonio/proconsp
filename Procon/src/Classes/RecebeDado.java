@@ -50,15 +50,35 @@ public class RecebeDado {
         
         while (i.hasNext()){
             
-        
             if(bProcon.getName().equals(parametro)){
                 return bProcon;
             }else{
                 bProcon =(Procon) i.next();
             }
-            
+     
         }
-        
         return null;
-    
+    }
+
+    Cidade searchCidade(ArrayList<Cidade> lista, String parametro){
+        
+        Iterator i;
+        Cidade bCidade;// objeto para retorno
+        
+        i = lista.iterator();//define iterator para busca
+        bCidade =(Cidade) i.next();
+        
+        while (i.hasNext()){
+            
+            if(bCidade.RetornarNome().equals(parametro)){
+                return bCidade;
+            }else{
+                bCidade =(Cidade) i.next();
+            }
+     
+        }
+        return null;
+    }
+
+
 }
