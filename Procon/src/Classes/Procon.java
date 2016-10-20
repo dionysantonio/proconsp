@@ -30,4 +30,7 @@ public class Procon {
          site = dados[7];
     }
     
+    public String getName(){
+        return nome;
+    }
 }

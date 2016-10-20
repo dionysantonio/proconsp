@@ -25,14 +25,14 @@ public class RecebeDado {
         
     }
     
-    ArrayList<Procon> procon(String caminho){
+    public ArrayList<Procon> procon(String caminho){
         
         date.readProcon(caminho);//define caminho para leitura de dados
         
         return date.getProcon();
     }
 
-    ArrayList<Cidade> cidade(String caminho){
+    public ArrayList<Cidade> cidade(String caminho){
         
         date.readCidade(caminho);//define caminho para leitura de dados
         
