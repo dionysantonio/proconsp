@@ -44,8 +44,11 @@ public class LeDados {
           String [] nextLine;
           while ((nextLine = reader.readNext()) != null) {
             // nextLine[] is an array of values from the line
-            System.out.println(nextLine[i]);
-            i++;
+            while(i<nextLine.length){
+              System.out.println(nextLine[i]);
+              i++;
+                }
+                i=0;
             }
      
       }catch(IOException u){
