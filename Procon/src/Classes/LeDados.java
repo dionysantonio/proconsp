@@ -7,13 +7,17 @@ package Classes;
     import java.io.DataInputStream;
     import java.io.BufferedInputStream;
     import java.io.FileInputStream;
+import java.io.FileReader;
     import java.io.IOException;
     import java.util.ArrayList;
     import java.util.Collection;
     import java.util.List;
     import java.net.URL;
+    import java.io.InputStream;
+import java.io.InputStreamReader;
     import java.net.MalformedURLException;
-
+import com.opencsv.CSVReader;
+import java.io.FileNotFoundException;
 
 
 
@@ -28,6 +32,28 @@ public class LeDados {
     private ArrayList<Procon> dadosProcon;
     private ArrayList<Cidade> dadosCidade;
 
+
+    public void le(){
+
+
+        int i=0;
+        
+        try{
+           URL url = new URL("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
+           CSVReader reader = new CSVReader(new InputStreamReader(url.openStream()),';');
+          String [] nextLine;
+          while ((nextLine = reader.readNext()) != null) {
+            // nextLine[] is an array of values from the line
+            System.out.println(nextLine[i]);
+            i++;
+            }
+     
+      }catch(IOException u){
+          System.out.println("Leitura interrompida ou fim da instrucao");
+      }
+    }
+
+    
     void readProcon(String caminho){
         
         URL url = null;
