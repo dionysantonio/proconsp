@@ -59,32 +59,23 @@ public class LeDados {
     
     void readProcon(String caminho){
         
-        URL url = null;
+        
         ArrayList<Procon> dados = new ArrayList<>();
         
-        try{
-            url = new URL(caminho);
-        }catch(MalformedURLException error){
-            error.getMessage();
-        }
-                
-        try{
-            dis = new DataInputStream(new BufferedInputStream(url.openStream()));
-            String linha;
-                while ((linha = dis.readLine())!= null){//A primeira linha é o cabecalho. Este loop lê o arquivo todo
-                    
-                    String[] dados1;
-                    
-                    linha = dis.readLine();
-                    dados1 = linha.split(";");//Separa os dados
-                    Procon dadosP= new Procon(dados1);
-                    dados.add(dadosP);
-                    
-                } 
-            dis.close();
-        }catch(IOException notFound){
-            System.out.print(notFound.getMessage());        
-        }
+     try{
+           URL url = new URL(caminho);
+           CSVReader reader = new CSVReader(new InputStreamReader(url.openStream()),';');
+          String [] nextLine;
+          while ((nextLine = reader.readNext()) != null) {
+            // nextLine[] is an array of values from the line
+            Procon dadosP= new Procon(nextLine);
+            dados.add(dadosP);
+            }
+     
+      }catch(IOException u){
+          System.out.println("Leitura interrompida ou fim da instrucao");
+      } 
+        
         dadosProcon = dados;
     //"C:/Users/d119322/Documents/teste.txt"
     }
@@ -93,23 +84,19 @@ public class LeDados {
              
          ArrayList<Cidade> dados = new ArrayList<>();
         
-        try{
-            dis = new DataInputStream(new BufferedInputStream(new FileInputStream(caminho)));
-            String linha;
-                while ((linha = dis.readLine())!= null){//A primeira linha é o cabecalho. Este loop lê o arquivo todo
-                    
-                    String[] dados1;
-                    
-                    linha = dis.readLine();
-                    dados1 = linha.split(";");//Separa os dados
-                    Cidade dadosP= new Cidade(dados1);
-                    dados.add(dadosP);
-                    
-                } 
-            dis.close();
-        }catch(IOException notFound){
-            System.out.print(notFound.getMessage());        
-        }
+     try{
+           URL url = new URL(caminho);
+           CSVReader reader = new CSVReader(new InputStreamReader(url.openStream()),';');
+          String [] nextLine;
+          while ((nextLine = reader.readNext()) != null) {
+            // nextLine[] is an array of values from the line
+            Cidade dadosC= new Cidade(nextLine);
+            dados.add(dadosC);
+            }
+     
+      }catch(IOException u){
+          System.out.println("Leitura interrompida ou fim da instrucao");
+      } 
         dadosCidade = dados;
     //"C:/Users/d119322/Documents/teste.txt"
     }
