@@ -40,7 +40,7 @@ public class RecebeDado {
        
     }
     
-    Procon searchProcon(ArrayList<Procon> lista, String parametro){
+    public Procon searchProcon(ArrayList<Procon> lista, String parametro){
         
         Iterator i;
         Procon bProcon;// objeto para retorno
@@ -60,7 +60,29 @@ public class RecebeDado {
         return null;
     }
 
-    Cidade searchCidade(ArrayList<Cidade> lista, String parametro){
+    public Cidade searchCidade(ArrayList<Cidade> lista, String parametro){
+    //Retorna a cidade por parametro de regiao
+        
+        Iterator i;
+        Cidade bCidade;// objeto para retorno
+        
+        i = lista.iterator();//define iterator para busca
+        bCidade =(Cidade) i.next();
+        
+        while (i.hasNext()){
+            
+            if(bCidade.RetornarRegiao().equals(parametro)){
+                return bCidade;
+            }else{
+                bCidade =(Cidade) i.next();
+            }
+     
+        }
+        return null;
+    }
+    
+     public Cidade searchRegiao(ArrayList<Cidade> lista, String parametro){
+    //Retorna a cidade por parametro de cidade
         
         Iterator i;
         Cidade bCidade;// objeto para retorno
@@ -80,5 +102,26 @@ public class RecebeDado {
         return null;
     }
 
+      public void RetornarDadosP(ArrayList<Procon> proc,ArrayList<Cidade> lista, String parametro){
+    //Retorna a cidade por parametro de regiao
+        
+        Iterator i;
+        Cidade bCidade;
+        Procon bProcon;// objeto para retorno
+        
+        i = lista.iterator();//define iterator para busca
+        bCidade =(Cidade) i.next();
+        
+        while (i.hasNext()){
+            
+            if(bCidade.RetornarRegiao().equals(parametro)){
+                bProcon =this.searchProcon(proc, bCidade.RetornarNome());
+                System.out.println(bProcon.getName() + bProcon.getEnd());
+            }else{
+                bCidade =(Cidade) i.next();
+            }
+     
+        }
 
+    }
 }
