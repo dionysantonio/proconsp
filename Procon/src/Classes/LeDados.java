@@ -85,8 +85,7 @@ public class LeDados {
          ArrayList<Cidade> dados = new ArrayList<>();
         
      try{
-           URL url = new URL(caminho);
-           CSVReader reader = new CSVReader(new InputStreamReader(url.openStream()),';');
+                      CSVReader reader = new CSVReader(new FileReader(caminho),',');
           String [] nextLine;
           while ((nextLine = reader.readNext()) != null) {
             // nextLine[] is an array of values from the line
