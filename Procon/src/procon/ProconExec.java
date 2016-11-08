@@ -7,6 +7,7 @@ package procon;
 import Classes.Cidade;
 import Classes.LeDados;
 import Classes.Cidade;
+import Classes.Regiao;
 import Classes.RecebeDado;
 import java.util.ArrayList;
 import Classes.Procon;
@@ -23,10 +24,14 @@ public class ProconExec {
         // TODO code application logic here
         RecebeDado a = new RecebeDado();
         ArrayList<Procon> a1 = new ArrayList<>();
-        LeDados aa = new LeDados();
-        aa.le();
-       //a1 = a.procon("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
+        ArrayList<Cidade> a2 = new ArrayList<>();
+        ArrayList<Regiao> a3 = new ArrayList<>();
+        String dados[];
         
+        a1 = a.procon("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
+        a2 = a.cidade("C:\\Users\\d119322\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\RELATORIO_DTB_BRASIL_MUNICIPIO.csv");
+       a3 = a.regiao("C:\\Users\\d119322\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\Procons-microregiao.csv");
+        dados = a.searchCidade(a2, "Sao Paulo");
     }
     
 }

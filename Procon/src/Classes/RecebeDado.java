@@ -7,6 +7,7 @@ package Classes;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.lang.ArrayIndexOutOfBoundsException;
 
 
 /**
@@ -40,6 +41,14 @@ public class RecebeDado {
        
     }
     
+    public ArrayList<Regiao> regiao(String caminho){
+        
+        date.readRegiao(caminho);//define caminho para leitura de dados
+        
+        return date.getRegiao();
+       
+    }
+    
     public Procon searchProcon(ArrayList<Procon> lista, String parametro){
         
         Iterator i;
@@ -60,25 +69,31 @@ public class RecebeDado {
         return null;
     }
 
-    public Cidade searchCidade(ArrayList<Cidade> lista, String parametro){
+    public String[] searchCidade(ArrayList<Cidade> lista, String parametro){
     //Retorna a cidade por parametro de regiao
-        
+        String[] dados = new String[20];
         Iterator i;
         Cidade bCidade;// objeto para retorno
+        int n = 0;
         
         i = lista.iterator();//define iterator para busca
         bCidade =(Cidade) i.next();
         
         while (i.hasNext()){
-            
+            try{
             if(bCidade.RetornarRegiao().equals(parametro)){
-                return bCidade;
+                dados[n] = bCidade.RetornarRegiao();
+                System.out.println(bCidade.RetornarRegiao());
             }else{
                 bCidade =(Cidade) i.next();
             }
-     
+            
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Oxi");
+            }
+            n++;
         }
-        return null;
+        return dados;
     }
     
      public Cidade searchRegiao(ArrayList<Cidade> lista, String parametro){

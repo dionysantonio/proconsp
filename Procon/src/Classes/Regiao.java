@@ -16,9 +16,11 @@ public class Regiao {
     
     List<Cidade> cidade = new ArrayList();
     private String microregiao;
-    private Cidade cidades;
+    private String procon ;
     
-    public Regiao(){
+    public Regiao(String dados[]){//Método contrutor
+        procon = dados[0];
+        microregiao = dados[1];
     }
     
     public void Imprimir(){

@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
     import java.net.MalformedURLException;
 import com.opencsv.CSVReader;
 import java.io.FileNotFoundException;
+import java.lang.ArrayIndexOutOfBoundsException;
 
 
 
@@ -31,30 +32,8 @@ public class LeDados {
     private DataInputStream dis;
     private ArrayList<Procon> dadosProcon;
     private ArrayList<Cidade> dadosCidade;
+    private ArrayList<Regiao> dadosRegiao;
 
-
-    public void le(){
-
-
-        int i=0;
-        
-        try{
-           URL url = new URL("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
-           CSVReader reader = new CSVReader(new InputStreamReader(url.openStream()),';');
-          String [] nextLine;
-          while ((nextLine = reader.readNext()) != null) {
-            // nextLine[] is an array of values from the line
-            while(i<nextLine.length){
-              System.out.println(nextLine[i]);
-              i++;
-                }
-                i=0;
-            }
-     
-      }catch(IOException u){
-          System.out.println("Leitura interrompida ou fim da instrucao");
-      }
-    }
 
     
     void readProcon(String caminho){
@@ -74,9 +53,10 @@ public class LeDados {
      
       }catch(IOException u){
           System.out.println("Leitura interrompida ou fim da instrucao");
+      }catch(ArrayIndexOutOfBoundsException u){
+          dadosProcon = dados;
       } 
         
-        dadosProcon = dados;
     //"C:/Users/d119322/Documents/teste.txt"
     }
     
@@ -85,7 +65,7 @@ public class LeDados {
          ArrayList<Cidade> dados = new ArrayList<>();
         
      try{
-                      CSVReader reader = new CSVReader(new FileReader(caminho),',');
+          CSVReader reader = new CSVReader(new FileReader(caminho),',');
           String [] nextLine;
           while ((nextLine = reader.readNext()) != null) {
             // nextLine[] is an array of values from the line
@@ -94,9 +74,29 @@ public class LeDados {
             }
      
       }catch(IOException u){
-          System.out.println("Leitura interrompida ou fim da instrucao");
-      } 
+          System.out.println("Leitura interrompida ou fim da instrucao"); 
+      }
         dadosCidade = dados;
+    //"C:/Users/d119322/Documents/teste.txt"
+    }
+    
+        void readRegiao(String caminho){
+             
+         ArrayList<Regiao> dados = new ArrayList<>();
+        
+     try{
+          CSVReader reader = new CSVReader(new FileReader(caminho),',');
+          String [] nextLine;
+          while ((nextLine = reader.readNext()) != null) {
+            // nextLine[] is an array of values from the line
+            Regiao dadosR= new Regiao(nextLine);
+            dados.add(dadosR);
+            }
+     
+      }catch(IOException u){
+          System.out.println("Leitura interrompida ou fim da instrucao"); 
+      }
+        dadosRegiao = dados;
     //"C:/Users/d119322/Documents/teste.txt"
     }
     
@@ -105,5 +105,8 @@ public class LeDados {
     } 
      public ArrayList<Cidade> getCidade(){
         return dadosCidade;// Agora retorna ArrayList
+    } 
+     public ArrayList<Regiao> getRegiao(){
+        return dadosRegiao;// Agora retorna ArrayList
     } 
 }
