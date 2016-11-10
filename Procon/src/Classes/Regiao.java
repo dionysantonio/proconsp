@@ -26,7 +26,12 @@ public class Regiao {
     public void Imprimir(){
              
     }
-    
+    public String RetornarMicroregiao(){//Retorna a região da cidade
+        return(microregiao);
+    }
+    public String RetornarProcon(){//Retorna a região da cidade
+        return(procon);
+    }
             
 }
 

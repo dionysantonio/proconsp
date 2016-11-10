@@ -22,6 +22,8 @@ public class ProconExec {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        int i;
         RecebeDado a = new RecebeDado();
         ArrayList<Procon> a1 = new ArrayList<>();
         ArrayList<Cidade> a2 = new ArrayList<>();
@@ -29,9 +31,13 @@ public class ProconExec {
         String dados[];
         
         a1 = a.procon("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
-        a2 = a.cidade("C:\\Users\\d119322\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\RELATORIO_DTB_BRASIL_MUNICIPIO.csv");
-       a3 = a.regiao("C:\\Users\\d119322\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\Procons-microregiao.csv");
+       a2 = a.cidade("C:\\Users\\d119322.FT.000\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\RELATORIO_DTB_BRASIL_MUNICIPIO.csv");
+       a3 = a.regiao("C:\\Users\\d119322.FT.000\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\Procons-microregiao.csv");
         dados = a.searchCidade(a2, "Sao Paulo");
+        dados = a.searchRegiao(a3, "Sao Paulo");
+       // System.out.printf("%s %d", dados[0], dados.length);
+       for(i = 0; null != dados[i];i++)
+           System.out.println(dados[i]);
     }
     
 }

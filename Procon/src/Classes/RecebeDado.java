@@ -69,52 +69,70 @@ public class RecebeDado {
         return null;
     }
 
-    public String[] searchCidade(ArrayList<Cidade> lista, String parametro){
+    public String[] searchCidade(ArrayList<Cidade> lista, String parametro){// retornar nome da cidade pela regiao
     //Retorna a cidade por parametro de regiao
         String[] dados = new String[20];
-        Iterator i;
+        Iterator<Cidade> i;
         Cidade bCidade;// objeto para retorno
         int n = 0;
+        String aux;
         
-        i = lista.iterator();//define iterator para busca
+        i = lista.iterator();//define iterator para buscar
         bCidade =(Cidade) i.next();
         
+        
         while (i.hasNext()){
+            
             try{
-            if(bCidade.RetornarRegiao().equals(parametro)){
-                dados[n] = bCidade.RetornarRegiao();
-                System.out.println(bCidade.RetornarRegiao());
+                aux = bCidade.RetornarRegiao();
+            if( aux.equals(parametro)){
+                dados[n] = bCidade.RetornarNome();
+                n++;
+                bCidade =  i.next();
             }else{
-                bCidade =(Cidade) i.next();
+                bCidade = i.next();
             }
             
             }catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("Oxi");
+                bCidade =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
             }
-            n++;
+            
         }
         return dados;
     }
     
-     public Cidade searchRegiao(ArrayList<Cidade> lista, String parametro){
-    //Retorna a cidade por parametro de cidade
+    public String[] searchRegiao(ArrayList<Regiao> lista, String parametro){// retornar nome de procon pelo nome da regiao
+    //Retorna a cidade por parametro de regiao
+        String[] dados = new String[20];
+        Iterator<Regiao> i;
+        Regiao bRegiao;// objeto para retorno
+        int n = 0;
+        String aux;
         
-        Iterator i;
-        Cidade bCidade;// objeto para retorno
+        i = lista.iterator();//define iterator para buscar
+        bRegiao =(Regiao) i.next();
         
-        i = lista.iterator();//define iterator para busca
-        bCidade =(Cidade) i.next();
         
         while (i.hasNext()){
             
-            if(bCidade.RetornarNome().equals(parametro)){
-                return bCidade;
+            try{
+                aux = bRegiao.RetornarMicroregiao();
+            if( aux.equals(parametro)){
+                dados[n] = bRegiao.RetornarProcon();
+                n++;
+                bRegiao =  i.next();
             }else{
-                bCidade =(Cidade) i.next();
+                bRegiao = i.next();
             }
-     
+            
+            }catch(ArrayIndexOutOfBoundsException e){
+                bRegiao =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
+            }
+            
         }
-        return null;
+        return dados;
     }
 
       public void RetornarDadosP(ArrayList<Procon> proc,ArrayList<Cidade> lista, String parametro){
