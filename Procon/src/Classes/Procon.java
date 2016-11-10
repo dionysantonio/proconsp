@@ -33,6 +33,9 @@ public class Procon {
     public String getName(){
         return nome;
     }
+    public String getOrgao(){
+        return orgao;
+    }
     public String getEnd(){
         return endereco;
     }

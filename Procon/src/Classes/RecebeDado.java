@@ -62,7 +62,7 @@ public class RecebeDado {
         while (i.hasNext()){
             
             try{
-                aux = bProcon.getName();
+                aux = bProcon.getOrgao();
             if( aux.equals(parametro)){
                 return bProcon;
             }else{
@@ -78,7 +78,7 @@ public class RecebeDado {
         return bProcon;
     }
 
-    public String[] searchCidade(ArrayList<Cidade> lista, String parametro){// retornar nome da cidade pela regiao
+    public String[] searchCidade(ArrayList<Cidade> lista, String parametro){// retornar nome da regiao pela cidade
     //Retorna a cidade por parametro de regiao
         String[] dados = new String[20];
         Iterator<Cidade> i;
@@ -93,9 +93,9 @@ public class RecebeDado {
         while (i.hasNext()){
             
             try{
-                aux = bCidade.RetornarRegiao();
+                aux = bCidade.RetornarNome();
             if( aux.equals(parametro)){
-                dados[n] = bCidade.RetornarNome();
+                dados[n] = bCidade.RetornarRegiao();
                 n++;
                 bCidade =  i.next();
             }else{

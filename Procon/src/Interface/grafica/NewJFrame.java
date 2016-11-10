@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 package Interface.grafica;
+import Classes.Cidade;
+import Classes.LeDados;
+import Classes.Cidade;
 import Classes.Regiao;
 import Classes.RecebeDado;
+import java.util.ArrayList;
 import Classes.Procon;
 
 /**
@@ -32,8 +36,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -54,12 +58,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
         jLabel1.setName("JLabel1"); // NOI18N
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         jButton1.setText("Consultar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -77,6 +75,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adamantina", "Adolfo", "Aguai", "aguas da Prata", "aguas de Lindoia", "aguas de Santa Barbara", "aguas de Sao Pedro", "Agudos", "Alambari", "Alfredo Marcondes", "Altair", "Altinopolis", "Alto Alegre", "Aluminio", "alvares Florence", "alvares Machado", "alvaro de Carvalho", "Alvinlandia", "Americana", "Americo Brasiliense", "Americo de Campos", "Amparo", "Analandia", "Andradina", "Angatuba", "Anhembi", "Anhumas", "Aparecida", "Aparecida d'Oeste", "Apiai", "Aracariguama", "Aracatuba", "Aracoiaba da Serra", "Aramina", "Arandu", "Arapei", "Araraquara", "Araras", "Arco-iris", "Arealva", "Areias", "Areiopolis", "Ariranha", "Artur Nogueira", "Aruja", "Aspasia", "Assis", "Atibaia", "Auriflama", "Avai", "Avanhandava", "Avare", "Bady Bassitt", "Balbinos", "Balsamo", "Bananal", "Barao de Antonina", "Barbosa", "Bariri", "Barra Bonita", "Barra do Chapeu", "Barra do Turvo", "Barretos", "Barrinha", "Barueri", "Bastos", "Batatais", "Bauru", "Bebedouro", "Bento de Abreu", "Bernardino de Campos", "Bertioga", "Bilac", "Birigui", "Biritiba-Mirim", "Boa Esperanca do Sul", "Bocaina", "Bofete", "Boituva", "Bom Jesus dos Perdoes", "Bom Sucesso de Itarare", "Bora", "Boraceia", "Borborema", "Borebi", "Botucatu", "Braganca Paulista", "Brauna", "Brejo Alegre", "Brodowski", "Brotas", "Buri", "Buritama", "Buritizal", "Cabralia Paulista", "Cabreuva", "Cacapava", "Cachoeira Paulista", "Caconde", "Cafelandia", "Caiabu", "Caieiras", "Caiua", "Cajamar", "Cajati", "Cajobi", "Cajuru", "Campina do Monte Alegre", "Campinas", "Campo Limpo Paulista", "Campos do Jordao", "Campos Novos Paulista", "Cananeia", "Canas", "Candido Mota", "Candido Rodrigues", "Canitar", "Capao Bonito", "Capela do Alto", "Capivari", "Caraguatatuba", "Carapicuiba", "Cardoso", "Casa Branca", "Cassia dos Coqueiros", "Castilho", "Catanduva", "Catigua", "Cedral", "Cerqueira Cesar", "Cerquilho", "Cesario Lange", "Charqueada", "Chavantes", "Clementina", "Colina", "Colombia", "Conchal", "Conchas", "Cordeiropolis", "Coroados", "Coronel Macedo", "Corumbatai", "Cosmopolis", "Cosmorama", "Cotia", "Cravinhos", "Cristais Paulista", "Cruzalia", "Cruzeiro", "Cubatao", "Cunha", "Descalvado", "Diadema", "Dirce Reis", "Divinolandia", "Dobrada", "Dois Corregos", "Dolcinopolis", "Dourado", "Dracena", "Duartina", "Dumont", "Echapora", "Eldorado", "Elias Fausto", "Elisiario", "Embauba", "Embu das Artes", "Embu-Guacu", "Emilianopolis", "Engenheiro Coelho", "Espirito Santo do Pinhal", "Espirito Santo do Turvo", "Estiva Gerbi", "Estrela do Norte", "Estrela d'Oeste", "Euclides da Cunha Paulista", "Fartura", "Fernando Prestes", "Fernandopolis", "Fernao", "Ferraz de Vasconcelos", "Flora Rica", "Floreal", "Florida Paulista", "Florinia", "Franca", "Francisco Morato", "Franco da Rocha", "Gabriel Monteiro", "Galia", "Garca", "Gastao Vidigal", "Gaviao Peixoto", "General Salgado", "Getulina", "Glicerio", "Guaicara", "Guaimbe", "Guaira", "Guapiacu", "Guapiara", "Guara", "Guaracai", "Guaraci", "Guarani d'Oeste", "Guaranta", "Guararapes", "Guararema", "Guaratingueta", "Guarei", "Guariba", "Guaruja", "Guarulhos", "Guatapara", "Guzolandia", "Herculandia", "Holambra", "Hortolandia", "Iacanga", "Iacri", "Iaras", "Ibate", "Ibira", "Ibirarema", "Ibitinga", "Ibiuna", "Icem", "Iepe", "Igaracu do Tiete", "Igarapava", "Igarata", "Iguape", "Ilha Comprida", "Ilha Solteira", "Ilhabela", "Indaiatuba", "Indiana", "Indiapora", "Inubia Paulista", "Ipaussu", "Ipero", "Ipeuna", "Ipigua", "Iporanga", "Ipua", "Iracemapolis", "Irapua", "Irapuru", "Itabera", "Itai", "Itajobi", "Itaju", "Itanhaem", "Itaoca", "Itapecerica da Serra", "Itapetininga", "Itapeva", "Itapevi", "Itapira", "Itapirapua Paulista", "Itapolis", "Itaporanga", "Itapui", "Itapura", "Itaquaquecetuba", "Itarare", "Itariri", "Itatiba", "Itatinga", "Itirapina", "Itirapua", "Itobi", "Itu", "Itupeva", "Ituverava", "Jaborandi", "Jaboticabal", "Jacarei", "Jaci", "Jacupiranga", "Jaguariuna", "Jales", "Jambeiro", "Jandira", "Jardinopolis", "Jarinu", "Jau", "Jeriquara", "Joanopolis", "Joao Ramalho", "Jose Bonifacio", "Julio Mesquita", "Jumirim", "Jundiai", "Junqueiropolis", "Juquia", "Juquitiba", "Lagoinha", "Laranjal Paulista", "Lavinia", "Lavrinhas", "Leme", "Lencois Paulista", "Limeira", "Lindoia", "Lins", "Lorena", "Lourdes", "Louveira", "Lucelia", "Lucianopolis", "Luis Antonio", "Luiziania", "Lupercio", "Lutecia", "Macatuba", "Macaubal", "Macedonia", "Magda", "Mairinque", "Mairipora", "Manduri", "Maraba Paulista", "Maracai", "Marapoama", "Mariapolis", "Marilia", "Marinopolis", "Martinopolis", "Matao", "Maua", "Mendonca", "Meridiano", "Mesopolis", "Miguelopolis", "Mineiros do Tiete", "Mira Estrela", "Miracatu", "Mirandopolis", "Mirante do Paranapanema", "Mirassol", "Mirassolandia", "Mococa", "Mogi das Cruzes", "Mogi Guacu", "Mogi Mirim", "Mombuca", "Moncoes", "Mongagua", "Monte Alegre do Sul", "Monte Alto", "Monte Aprazivel", "Monte Azul Paulista", "Monte Castelo", "Monte Mor", "Monteiro Lobato", "Morro Agudo", "Morungaba", "Motuca", "Murutinga do Sul", "Nantes", "Narandiba", "Natividade da Serra", "Nazare Paulista", "Neves Paulista", "Nhandeara", "Nipoa", "Nova Alianca", "Nova Campina", "Nova Canaa Paulista", "Nova Castilho", "Nova Europa", "Nova Granada", "Nova Guataporanga", "Nova Independencia", "Nova Luzitania", "Nova Odessa", "Novais", "Novo Horizonte", "Nuporanga", "Ocaucu", "oleo", "Olimpia", "Onda Verde", "Oriente", "Orindiuva", "Orlandia", "Osasco", "Oscar Bressane", "Osvaldo Cruz", "Ourinhos", "Ouro Verde", "Ouroeste", "Pacaembu", "Palestina", "Palmares Paulista", "Palmeira d'Oeste", "Palmital", "Panorama", "Paraguacu Paulista", "Paraibuna", "Paraiso", "Paranapanema", "Paranapua", "Parapua", "Pardinho", "Pariquera-Acu", "Parisi", "Patrocinio Paulista", "Pauliceia", "Paulinia", "Paulistania", "Paulo de Faria", "Pederneiras", "Pedra Bela", "Pedranopolis", "Pedregulho", "Pedreira", "Pedrinhas Paulista", "Pedro de Toledo", "Penapolis", "Pereira Barreto", "Pereiras", "Peruibe", "Piacatu", "Piedade", "Pilar do Sul", "Pindamonhangaba", "Pindorama", "Pinhalzinho", "Piquerobi", "Piquete", "Piracaia", "Piracicaba", "Piraju", "Pirajui", "Pirangi", "Pirapora do Bom Jesus", "Pirapozinho", "Pirassununga", "Piratininga", "Pitangueiras", "Planalto", "Platina", "Poa", "Poloni", "Pompeia", "Pongai", "Pontal", "Pontalinda", "Pontes Gestal", "Populina", "Porangaba", "Porto Feliz", "Porto Ferreira", "Potim", "Potirendaba", "Pracinha", "Pradopolis", "Praia Grande", "Pratania", "Presidente Alves", "Presidente Bernardes", "Presidente Epitacio", "Presidente Prudente", "Presidente Venceslau", "Promissao", "Quadra", "Quata", "Queiroz", "Queluz", "Quintana", "Rafard", "Rancharia", "Redencao da Serra", "Regente Feijo", "Reginopolis", "Registro", "Restinga", "Ribeira", "Ribeirao Bonito", "Ribeirao Branco", "Ribeirao Corrente", "Ribeirao do Sul", "Ribeirao dos indios", "Ribeirao Grande", "Ribeirao Pires", "Ribeirao Preto", "Rifaina", "Rincao", "Rinopolis", "Rio Claro", "Rio das Pedras", "Rio Grande da Serra", "Riolandia", "Riversul", "Rosana", "Roseira", "Rubiacea", "Rubineia", "Sabino", "Sagres", "Sales", "Sales Oliveira", "Salesopolis", "Salmourao", "Saltinho", "Salto", "Salto de Pirapora", "Salto Grande", "Sandovalina", "Santa Adelia", "Santa Albertina", "Santa Barbara d'Oeste", "Santa Branca", "Santa Clara d'Oeste", "Santa Cruz da Conceicao", "Santa Cruz da Esperanca", "Santa Cruz das Palmeiras", "Santa Cruz do Rio Pardo", "Santa Ernestina", "Santa Fe do Sul", "Santa Gertrudes", "Santa Isabel", "Santa Lucia", "Santa Maria da Serra", "Santa Mercedes", "Santa Rita do Passa Quatro", "Santa Rita d'Oeste", "Santa Rosa de Viterbo", "Santa Salete", "Santana da Ponte Pensa", "Santana de Parnaiba", "Santo Anastacio", "Santo Andre", "Santo Antonio da Alegria", "Santo Antonio de Posse", "Santo Antonio do Aracangua", "Santo Antonio do Jardim", "Santo Antonio do Pinhal", "Santo Expedito", "Santopolis do Aguapei", "Santos", "Sao Bento do Sapucai", "Sao Bernardo do Campo", "Sao Caetano do Sul", "Sao Carlos", "Sao Francisco", "Sao Joao da Boa Vista", "Sao Joao das Duas Pontes", "Sao Joao de Iracema", "Sao Joao do Pau d'Alho", "Sao Joaquim da Barra", "Sao Jose da Bela Vista", "Sao Jose do Barreiro", "Sao Jose do Rio Pardo", "Sao Jose do Rio Preto", "Sao Jose dos Campos", "Sao Lourenco da Serra", "Sao Luis do Paraitinga", "Sao Manuel", "Sao Miguel Arcanjo", "Sao Paulo", "Sao Pedro", "Sao Pedro do Turvo", "Sao Roque", "Sao Sebastiao", "Sao Sebastiao da Grama", "Sao Simao", "Sao Vicente", "Sarapui", "Sarutaia", "Sebastianopolis do Sul", "Serra Azul", "Serra Negra", "Serrana", "Sertaozinho", "Sete Barras", "Severinia", "Silveiras", "Socorro", "Sorocaba", "Sud Mennucci", "Sumare", "Suzanapolis", "Suzano", "Tabapua", "Tabatinga", "Taboao da Serra", "Taciba", "Taguai", "Taiacu", "Taiuva", "Tambau", "Tanabi", "Tapirai", "Tapiratiba", "Taquaral", "Taquaritinga", "Taquarituba", "Taquarivai", "Tarabai", "Taruma", "Tatui", "Taubate", "Tejupa", "Teodoro Sampaio", "Terra Roxa", "Tiete", "Timburi", "Torre de Pedra", "Torrinha", "Trabiju", "Tremembe", "Tres Fronteiras", "Tuiuti", "Tupa", "Tupi Paulista", "Turiuba", "Turmalina", "Ubarana", "Ubatuba", "Ubirajara", "Uchoa", "Uniao Paulista", "Urania", "Uru", "Urupes", "Valentim Gentil", "Valinhos", "Valparaiso", "Vargem", "Vargem Grande do Sul", "Vargem Grande Paulista", "Varzea Paulista", "Vera Cruz", "Vinhedo", "Viradouro", "Vista Alegre do Alto", "Vitoria Brasil", "Votorantim", "Votuporanga", "Zacarias", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,9 +90,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(133, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,19 +100,15 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
                 .addComponent(jButton1)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                  // TODO add your handling code here:
@@ -120,11 +121,36 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         //jLabel1.setText("Ok");
+        int i;
         RecebeDado a = new RecebeDado();
-        Procon b;
-        a.procon("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
+        ArrayList<Procon> a1 = new ArrayList<>();
+        ArrayList<Cidade> a2 = new ArrayList<>();
+        ArrayList<Regiao> a3 = new ArrayList<>();
+        String dados[], dados1[];
+        Procon busca;
+        
+        String selecao;
+        selecao = jComboBox1.getSelectedItem().toString();
        
+       a1 = a.procon("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
+       a2 = a.cidade("C:\\Users\\d119322.FT.000\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\RELATORIO_DTB_BRASIL_MUNICIPIO.csv");
+       a3 = a.regiao("C:\\Users\\d119322.FT.000\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\Procons-microregiao.csv");
+        
+       /*Chamada para busca*/
+       dados = a.searchCidade(a2, "Caconde");//Cidade para busca da regiao do usuario     
+       dados1 = a.searchRegiao(a3, dados[0]);//busca do procon para apresentar dados
+ 
+       for(i = 0; null != dados1[i];i++){// Saindo cidade + endereco
+           System.out.println(dados1[i]);
+           busca = a.searchProcon(a1,dados1[i]);
+           System.out.println(dados1[i] + busca.getEnd());// Entrega endereço
+       }
+        
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +182,7 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new NewJFrame().setVisible(true);
             }
         });
@@ -163,8 +190,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFrame jFrame1;
     public static javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
