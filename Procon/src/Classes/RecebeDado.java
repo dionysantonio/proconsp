@@ -49,24 +49,33 @@ public class RecebeDado {
        
     }
     
-    public Procon searchProcon(ArrayList<Procon> lista, String parametro){
+    public Procon searchProcon(ArrayList<Procon> lista, String parametro){//Retornar Procon Por busca
         
-        Iterator i;
+        Iterator<Procon> i;
         Procon bProcon;// objeto para retorno
+        String aux;
         
-        i = lista.iterator();//define iterator para busca
+        i = lista.iterator();//define iterator para buscar
         bProcon =(Procon) i.next();
+        
         
         while (i.hasNext()){
             
-            if(bProcon.getName().equals(parametro)){
+            try{
+                aux = bProcon.getName();
+            if( aux.equals(parametro)){
                 return bProcon;
             }else{
-                bProcon =(Procon) i.next();
+                bProcon =  i.next();
             }
-     
+            
+            }catch(ArrayIndexOutOfBoundsException e){
+                bProcon =  i.next();
+                //System.out.println(bCidade.RetornarRegiao());
+            }
+            
         }
-        return null;
+        return bProcon;
     }
 
     public String[] searchCidade(ArrayList<Cidade> lista, String parametro){// retornar nome da cidade pela regiao
