@@ -87,7 +87,7 @@ public class RecebeDado {
         String aux;
         
         i = lista.iterator();//define iterator para buscar
-        bCidade =(Cidade) i.next();
+        bCidade =i.next();
         
         
         while (i.hasNext()){

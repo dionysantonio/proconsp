@@ -39,4 +39,13 @@ public class Procon {
     public String getEnd(){
         return endereco;
     }
+    public String getTel(){
+        return telefone1;
+    }
+    public String getEmail(){
+        return email;
+    }
+    public String getSite(){
+        return site;
+    }
 }

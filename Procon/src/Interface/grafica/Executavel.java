@@ -38,7 +38,8 @@ public class Executavel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -83,22 +84,24 @@ public class Executavel extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                        .addComponent(jButton1)
+                        .addGap(126, 126, 126)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,10 +111,11 @@ public class Executavel extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap(222, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)))
         );
 
         pack();
@@ -142,8 +146,8 @@ public class Executavel extends javax.swing.JFrame {
         selecao = jComboBox1.getSelectedItem().toString();
        
        a1 = a.procon("http://www.justica.gov.br/dados-abertos/anexos/procons-municipais-sao-paulo-6.csv");
-       a2 = a.cidade("C:\\Users\\d119322\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\RELATORIO_DTB_BRASIL_MUNICIPIO.csv");
-       a3 = a.regiao("C:\\Users\\d119322\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\Procons-microregiao.csv");
+       a2 = a.cidade("C:\\Users\\ADM\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\RELATORIO_DTB_BRASIL_MUNICIPIO.csv");
+       a3 = a.regiao("C:\\Users\\ADM\\Documents\\NetBeansProjects\\proconsp\\Procon\\src\\Procons-microregiao.csv");
         
        /*Chamada para busca*/
        dados = a.searchCidade(a2, "Caconde");//Cidade para busca da regiao do usuario     
@@ -152,12 +156,12 @@ public class Executavel extends javax.swing.JFrame {
        for(i = 0; null != dados1[i];i++){// Saindo cidade + endereco
            //System.out.println(dados1[i]);
            busca = a.searchProcon(a1,dados1[i]);
-           texto = texto.concat(busca.getOrgao() + " \n " + busca.getEnd()+ "\n" + busca.getName() + "\n" + busca.getTel()  + "\n" +  busca.getEmail() + "\n" +  busca.getSite()+ "\n");
+           texto = texto.concat(busca.getOrgao() + '\n' + busca.getEnd()+ '\n' + busca.getName() + '\n'+ busca.getTel()  + '\n' +  busca.getEmail() + '\n' +  busca.getSite()+ "\n\n");
            //
            // Entrega endereço
        }
         
-        jLabel2.setText(texto);
+        jTextArea1.setText(texto);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -206,6 +210,7 @@ public class Executavel extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFrame jFrame1;
     public static javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
